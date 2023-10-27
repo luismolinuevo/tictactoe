@@ -11,9 +11,10 @@ function App() {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  //   let board;
+
   let gameOver = false;
-  let turn = "X";
+//   let turn = "X";
+  const [turn, setTurn] = React.useState("X")
   let win;
 
   function handleTurn(event) {
@@ -23,7 +24,7 @@ function App() {
     let newBoard = [...board]
     newBoard[idx] = turn
     setBoard(newBoard)
-    turn = turn === 'X' ? 'O' : 'X'
+    setTurn(turn === 'X' ? 'O' : 'X')
     // win = getWinner()
     // render()
     }
