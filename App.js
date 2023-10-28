@@ -1,5 +1,15 @@
 function App() {
-    const [board, setBoard] = React.useState(["","","","","","","","",""])
+  const [board, setBoard] = React.useState([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
 
   const winningCombos = [
     [0, 1, 2],
@@ -12,28 +22,27 @@ function App() {
     [2, 4, 6],
   ];
 
-  let gameOver = false;
-//   let turn = "X";
-  const [turn, setTurn] = React.useState("X")
-  let win;
+  const [gameOver, setGameOver] = React.useState(false);
+  const [turn, setTurn] = React.useState("X");
+  const [win, setWin] = React.useState();
 
   function handleTurn(event) {
-    console.log(event.target, event.target.id)
-    let idx = event.target.id
+    console.log(event.target, event.target.id);
+    let idx = event.target.id;
     if (gameOver == false) {
-    let newBoard = [...board]
-    newBoard[idx] = turn
-    setBoard(newBoard)
-    setTurn(turn === 'X' ? 'O' : 'X')
-    // win = getWinner()
-    // render()
+      let newBoard = [...board];
+      newBoard[idx] = turn;
+      setBoard(newBoard);
+      setTurn(turn === "X" ? "O" : "X");
+      // win = getWinner()
+      // render()
     }
-    }
+  }
 
   return (
     <div>
       <h1>Tic-React-Toe</h1>
-      <h2>It's X's turn!</h2>
+      <h2>It's {turn}'s turn!</h2>
       <div class="flex-container flex-column">
         <div class="flex-container flex-wrap" id="board" onClick={handleTurn}>
           {board.map((value, idx) => {
